@@ -1,3 +1,7 @@
-html{
-    font-family: Vazirmatn, sans-serif;
+html {
+  font-family: Vazirmatn, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
