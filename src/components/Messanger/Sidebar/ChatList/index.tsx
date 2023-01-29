@@ -1,14 +1,12 @@
 import React from "react";
+import { IoPersonCircleSharp } from "react-icons/io5";
 
 const ChatList = () => {
   return (
-    <div
-      className="bg-slate-700 rounded-2xl p-4 flex flex-col gap-6 overflow-auto"
-      style={{ height: "calc(100vh - 90px)" }}
-    >
-      <div className="flex gap-8">
-        <div className="flex gap-2">
-          <div className="bg-red-500 w-9 h-9 rounded-full"></div>
+    <div className="bg-slate-700 rounded-2xl p-4 flex flex-col gap-6 overflow-auto h-full">
+      <div className="flex justify-between">
+        <div className="flex gap-2 ">
+          <IoPersonCircleSharp className="text-4xl " color="#ff4a59" />
           <div>
             <h2 className="text-sm text-white">Karim Jan</h2>
             <p className="text-xs text-white">Kojaei jasem khan ?</p>

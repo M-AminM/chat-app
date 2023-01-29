@@ -3,7 +3,7 @@ import Layout from "./Layout";
 
 const Messanger = () => {
   return (
-    <div>
+    <div className="h-screen w-screen p-10 ">
       <Layout />
     </div>
   );

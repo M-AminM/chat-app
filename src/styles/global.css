@@ -1,5 +1,6 @@
 html {
   font-family: Vazirmatn, sans-serif;
+  background-image: url("/public/assets/images/linen.png");
 }
 
 ::-webkit-scrollbar {

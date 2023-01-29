@@ -7,12 +7,12 @@ import ChatSearch from "../Sidebar/Search";
 
 const Layout = () => {
   return (
-    <div className="flex justify-center items-center gap-10">
-      <div>
+    <div className="flex justify-center items-center gap-8 h-full w-full">
+      <div className="h-full flex flex-col gap-2  flex-[0_0_350px]">
         <ChatSearch />
         <ChatList />
       </div>
-      <div>
+      <div className="h-full flex flex-col  w-3/5">
         <ChatHeader />
         <ChatMessage />
         <ChatSender />
