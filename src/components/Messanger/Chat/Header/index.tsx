@@ -4,7 +4,10 @@ import { BsCameraVideo } from "react-icons/bs";
 import { CgMoreVertical } from "react-icons/cg";
 import { IoPersonCircleSharp } from "react-icons/io5";
 
-const ChatHeader = () => {
+interface ChatHeaderProps extends React.PropsWithChildren {}
+const ChatHeader: React.FunctionComponent<
+  ChatHeaderProps
+> = (): JSX.Element => {
   return (
     <div className="flex justify-between items-center w-full bg-slate-700 p-4 rounded-t-2xl">
       <div className="flex gap-2">

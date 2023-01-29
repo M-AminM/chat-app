@@ -1,7 +1,8 @@
 import React from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
 
-const ChatList = () => {
+interface ChatListProps extends React.PropsWithChildren {}
+const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
   return (
     <div className="bg-slate-700 rounded-2xl p-4 flex flex-col gap-6 overflow-auto h-full">
       <div className="flex justify-between">

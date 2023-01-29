@@ -1,6 +1,9 @@
 import React from "react";
 
-const ChatMessage = () => {
+interface ChatMessageProps extends React.PropsWithChildren {}
+const ChatMessage: React.FunctionComponent<
+  ChatMessageProps
+> = (): JSX.Element => {
   return (
     <div
       style={{

@@ -1,7 +1,10 @@
 import React from "react";
 import Messanger from "../components/Messanger";
 
-const HomePage = () => {
+interface HomePageComponent extends React.PropsWithChildren {}
+const HomePage: React.FunctionComponent<
+  HomePageComponent
+> = ({}): JSX.Element => {
   return (
     <div>
       <Messanger />

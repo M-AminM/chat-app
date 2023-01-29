@@ -1,7 +1,10 @@
 import React from "react";
 import { MdSend } from "react-icons/md";
 
-const ChatSender = () => {
+interface ChatSenderProsp extends React.PropsWithChildren {}
+const ChatSender: React.FunctionComponent<
+  ChatSenderProsp
+> = (): JSX.Element => {
   return (
     <div className="flex items-center bg-slate-700 pr-4 rounded-b-2xl">
       <input

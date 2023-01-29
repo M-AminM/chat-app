@@ -1,7 +1,10 @@
 import React from "react";
 import { SlMagnifier } from "react-icons/sl";
 
-const ChatSearch = () => {
+interface ChatSearchProps extends React.PropsWithChildren {}
+const ChatSearch: React.FunctionComponent<
+  ChatSearchProps
+> = (): JSX.Element => {
   return (
     <div className="flex bg-slate-700 items-center rounded-2xl ">
       <SlMagnifier className="ml-2 text-gray-300 cursor-pointer text-xl" />

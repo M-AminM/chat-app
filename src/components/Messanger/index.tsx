@@ -1,7 +1,8 @@
 import React from "react";
 import Layout from "./Layout";
 
-const Messanger = () => {
+interface MessangerProps extends React.PropsWithChildren {}
+const Messanger: React.FunctionComponent<MessangerProps> = (): JSX.Element => {
   return (
     <div className="h-screen w-screen p-10 ">
       <Layout />
