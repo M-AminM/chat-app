@@ -10,12 +10,22 @@ type MessageType = {
   type: string;
 };
 
-const InitialState: MessageType[] = [];
+type ContextAction<T, K> = {
+  type: T;
+  payload: K;
+};
 
-export const AppContext = createContext<any>({
+type Context = {
+  state: MessageType[];
+  dispatch: React.Dispatch<ContextAction<any, any>>;
+};
+
+export const AppContext = createContext<Context>({
   state: [],
   dispatch: () => null,
 });
+
+const InitialState: MessageType[] = [];
 
 const AppContextProvider: React.FunctionComponent<AppContextProviderProps> = ({
   children,

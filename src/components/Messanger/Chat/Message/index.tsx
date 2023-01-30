@@ -1,22 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import MessageDetail from "./MessageDetail";
 import { AppContext } from "../../../../context/store";
 
 interface ChatMessageProps extends React.PropsWithChildren {}
 
-type DataType = {
-  id: string;
-  name: string;
-  message: string;
-  type: string;
-};
-
 const ChatMessage: React.FunctionComponent<
   ChatMessageProps
 > = (): JSX.Element => {
-  const [data, setData] = useState<DataType[]>([]);
   const { state, dispatch } = useContext(AppContext);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   const fetchData = () => {
     axios
@@ -31,6 +24,10 @@ const ChatMessage: React.FunctionComponent<
     fetchData();
   }, [state]);
 
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [state.length]);
+
   return (
     <div
       style={{
@@ -42,8 +39,8 @@ const ChatMessage: React.FunctionComponent<
         {state.map((message: any) => (
           <MessageDetail type={message.type} message={message.message} />
         ))}
-        
       </ul>
+      <div ref={bottomRef} />
     </div>
   );
 };

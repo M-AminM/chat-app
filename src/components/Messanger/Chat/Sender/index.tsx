@@ -1,23 +1,21 @@
-import React, { useRef, useContext, useState } from "react";
+import React, { useRef, useState } from "react";
 import { MdSend } from "react-icons/md";
 import axios from "axios";
-import { AppContext } from "../../../../context/store";
 
 interface ChatSenderProsp extends React.PropsWithChildren {}
 const ChatSender: React.FunctionComponent<
   ChatSenderProsp
 > = (): JSX.Element => {
-  const inputRef: any = useRef();
-
-
+  const inputRef = useRef<any>();
+  const [type, setType] = useState("");
+  const name = type === "sender" ? "Karim Jan" : "Me";
 
   const clickHandler = () => {
-
     const data = {
       id: new Date().getTime(),
-      name: "Me",
+      name: name,
       message: inputRef.current.value,
-      type: "reciever",
+      type: type,
     };
 
     axios({
@@ -31,11 +29,11 @@ const ChatSender: React.FunctionComponent<
     })
       .then((response) => {
         console.log(response);
-
-        // dispatch({ type: "GET_ALL_MESSAGE", payload: response.data });
       })
 
       .catch((err) => {});
+    inputRef.current.value = "";
+    inputRef.current.focus();
   };
 
   return (
@@ -45,6 +43,30 @@ const ChatSender: React.FunctionComponent<
         placeholder="what do you want to say..."
         ref={inputRef}
       />
+
+      <div className="pr-4">
+        <div onChange={(e: any) => setType(e.target.value)}>
+          <div className="flex gap-2">
+            <label
+              className="text-sm font-semibold text-gray-300 tracking-wider"
+              htmlFor="sender"
+            >
+              sender
+            </label>
+            <input type="radio" id="sender" name="type" value="sender" />
+          </div>
+
+          <div className="flex gap-2">
+            <label
+              className="text-sm font-semibold text-gray-300 tracking-wider"
+              htmlFor="reciever"
+            >
+              reciever
+            </label>
+            <input type="radio" id="reciever" name="type" value="reciever" />
+          </div>
+        </div>
+      </div>
       <MdSend
         onClick={clickHandler}
         className="text-gray-300 text-2xl cursor-pointer hover:text-blue-400 duration-150 ease-out"
