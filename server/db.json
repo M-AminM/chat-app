@@ -161,6 +161,32 @@
       "name": "Me",
       "message": "",
       "type": "reciever"
+    },
+    {
+      "id": 1675090082239,
+      "name": "Karim Jan",
+      "message": "salam",
+      "type": "sender"
+    },
+    {
+      "id": 1675090086108,
+      "name": "Me",
+      "message": "sad",
+      "type": "reciever"
+    }
+  ],
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Karim jan",
+      "lastMessage": "where are you ?",
+      "lastMessageSent": "5/05/2022, 6:21 pm"
+    },
+    {
+      "id": 2,
+      "name": "Gholam jan",
+      "lastMessage": "Fuck you :D",
+      "lastMessageSent": "5/05/2022, 6:21 pm"
     }
   ]
 }
