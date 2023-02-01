@@ -13,7 +13,8 @@ type ContactType = {
 };
 
 const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
-  const { contacts, dispatchContacts, setId } = useContext(AppContext);
+  const { contacts, dispatchContacts, setId, setName, id } =
+    useContext(AppContext);
 
   const contactsData = () => {
     axios
@@ -24,10 +25,11 @@ const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
       .catch((err) => console.log(err));
   };
 
-  const clickHandler = (id: number) => {
-    setId(id);
+  const clickHandler = (id1: number, contact: string) => {
+    setId(id1);
+    setName(contact);
   };
-  
+
   useEffect(() => {
     contactsData();
   }, []);
@@ -36,9 +38,11 @@ const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
     <div className="bg-slate-700 rounded-2xl flex flex-col overflow-auto h-full">
       {contacts.map((contact: ContactType) => (
         <div
-          className="flex justify-between cursor-pointer p-4  duration-150 ease-in"
+          className={`flex justify-between cursor-pointer p-4 hover: duration-150 ease-in ${
+            contact.id === id && "bg-slate-800"
+          }`}
           key={contact.id}
-          onClick={() => clickHandler(contact.id)}
+          onClick={() => clickHandler(contact.id, contact.name)}
         >
           <div className="flex gap-2 ">
             <IoPersonCircleSharp className="text-4xl " color="#ff4a59" />

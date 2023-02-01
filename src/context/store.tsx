@@ -22,6 +22,8 @@ type Context = {
   dispatchContacts: React.Dispatch<ContextAction<any, any>>;
   id: number;
   setId: React.Dispatch<React.SetStateAction<number>>;
+  name: string;
+  setName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const AppContext = createContext<Context>({
@@ -29,6 +31,8 @@ export const AppContext = createContext<Context>({
   dispatchContacts: () => null,
   id: 1,
   setId: () => null,
+  name: "Karim jan",
+  setName: () => null,
 });
 
 const InitialContact: ContactType[] = [];
@@ -42,9 +46,12 @@ const AppContextProvider: React.FunctionComponent<AppContextProviderProps> = ({
   );
 
   const [id, setId] = useState(1);
+  const [name, setName] = useState("Karim jan");
 
   return (
-    <AppContext.Provider value={{ contacts, dispatchContacts, id, setId }}>
+    <AppContext.Provider
+      value={{ contacts, dispatchContacts, id, setId, name, setName }}
+    >
       {children}
     </AppContext.Provider>
   );

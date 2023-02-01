@@ -18,6 +18,7 @@ const ChatSender: React.FunctionComponent<
   const [click, setClick] = useState(false);
   let messages: DataType[] = contacts.filter((data) => data.id === id)[0]
     ?.messages;
+  let nameChat = contacts.filter((data) => data.id === id)[0]?.name;
 
   useEffect(() => {
     // if (messages !== undefined) {
@@ -33,7 +34,7 @@ const ChatSender: React.FunctionComponent<
   const inputRef = useRef<any>();
   const [input, setInput] = useState("");
   const [sender, setSender] = useState(false);
-  const name = sender ? "Karim Jan" : "Me";
+  const name = sender ? nameChat : "Me";
   const type = sender ? "sender" : "reciever";
 
   const clickHandler = () => {
@@ -71,7 +72,7 @@ const ChatSender: React.FunctionComponent<
     if (click) {
       const data1 = {
         id: id,
-        name: "Gholam jan",
+        name: nameChat,
         lastMessage: ":D",
         lastMessageSent: "5/05/2022, 6:21 pm",
         messages: myArray,
@@ -89,6 +90,7 @@ const ChatSender: React.FunctionComponent<
         })
         .catch((err) => {});
       setClick(false);
+      setInput("");
     }
   }, [click]);
   return (
@@ -97,6 +99,7 @@ const ChatSender: React.FunctionComponent<
         className="bg-slate-700 text-gray-300 border-none outline-0 rounded-2xl px-4 py-3 w-full"
         placeholder="what do you want to say..."
         onChange={(e) => setInput(e.target.value)}
+        value={input}
       />
       <button
         onClick={() => setSender(!sender)}
@@ -104,7 +107,7 @@ const ChatSender: React.FunctionComponent<
           sender ? "bg-blue-400 text-white" : ""
         }`}
       >
-        Sender
+        {sender ? "Sender" : "Reciever"}
       </button>
       <MdSend
         onClick={clickHandler}

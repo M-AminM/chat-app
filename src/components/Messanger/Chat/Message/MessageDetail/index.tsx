@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoPersonCircleSharp } from "react-icons/io5";
+import { AppContext } from "../../../../../context/store";
 
 interface MessageDetailProps extends React.PropsWithChildren {
   type: string;
@@ -12,13 +13,14 @@ type LookupType = {
 };
 
 const Sender = (message: { message: string }) => {
+  const { name } = useContext(AppContext);
   return (
     <li className="flex gap-2 w-full">
       <div className="text-4xl">
         <IoPersonCircleSharp color="#ff4a59" />
       </div>
       <div className="bg-white rounded-lg p-1 w-80">
-        <h3 className="font-semibold text-sm">Karim Jan</h3>
+        <h3 className="font-semibold text-sm">{name}</h3>
         <p className="text-xs">{message.message}</p>
       </div>
     </li>
