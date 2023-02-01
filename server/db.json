@@ -245,6 +245,12 @@
           "name": "Me",
           "message": "What ? :)",
           "type": "sender"
+        },
+        {
+          "id": 1675252157120,
+          "name": "Me",
+          "message": "hello",
+          "type": "reciever"
         }
       ]
     }

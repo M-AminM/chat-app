@@ -41,28 +41,38 @@ const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
   useEffect(() => {
     contactsData();
   }, []);
-  
+
+  const messages: any = contacts.map((contact) => contact.messages);
+  let lastMessage: any;
+
+  lastMessage = messages.map(
+    (message: any, index: number) => message[messages[index]?.length - 1]
+  );
 
   return (
     <div className="bg-slate-700 rounded-2xl flex flex-col overflow-auto h-full">
-      {(search.length === 0 ? contacts : search).map((contact: ContactType) => (
-        <div
-          className={`flex justify-between cursor-pointer p-4 hover: duration-150 ease-in ${
-            contact.id === id && "bg-slate-800"
-          }`}
-          key={contact.id}
-          onClick={() => clickHandler(contact.id, contact.name)}
-        >
-          <div className="flex gap-2 ">
-            <IoPersonCircleSharp className="text-4xl " color="#ff4a59" />
-            <div>
-              <h2 className="text-sm text-white">{contact.name}</h2>
-              <p className="text-xs text-white">{contact.lastMessage}</p>
+      {(search.length === 0 ? contacts : search).map(
+        (contact: ContactType, index: number) => (
+          <div
+            className={`flex justify-between cursor-pointer p-4 hover: duration-150 ease-in ${
+              contact.id === id && "bg-slate-800"
+            }`}
+            key={contact.id}
+            onClick={() => clickHandler(contact.id, contact.name)}
+          >
+            <div className="flex gap-2 ">
+              <IoPersonCircleSharp className="text-4xl " color="#ff4a59" />
+              <div>
+                <h2 className="text-sm text-white">{contact.name}</h2>
+                <p className="text-xs text-white">
+                  {lastMessage[index].message}
+                </p>
+              </div>
             </div>
+            <p className="text-sm text-gray-300">{contact.lastMessageSent}</p>
           </div>
-          <p className="text-sm text-gray-300">{contact.lastMessageSent}</p>
-        </div>
-      ))}
+        )
+      )}
     </div>
   );
 };
