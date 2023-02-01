@@ -13,7 +13,7 @@ type ContactType = {
 };
 
 const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
-  const { contacts, dispatchContacts, setId, setName, id } =
+  const { contacts, dispatchContacts, setId, setName, id, setShowChat } =
     useContext(AppContext);
 
   const contactsData = () => {
@@ -28,6 +28,7 @@ const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
   const clickHandler = (id1: number, contact: string) => {
     setId(id1);
     setName(contact);
+    setShowChat(false);
   };
 
   useEffect(() => {

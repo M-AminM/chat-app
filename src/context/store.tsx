@@ -24,6 +24,8 @@ type Context = {
   setId: React.Dispatch<React.SetStateAction<number>>;
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
+  showChat: boolean;
+  setShowChat: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const AppContext = createContext<Context>({
@@ -33,6 +35,8 @@ export const AppContext = createContext<Context>({
   setId: () => null,
   name: "Karim jan",
   setName: () => null,
+  showChat: false,
+  setShowChat: () => null,
 });
 
 const InitialContact: ContactType[] = [];
@@ -47,10 +51,20 @@ const AppContextProvider: React.FunctionComponent<AppContextProviderProps> = ({
 
   const [id, setId] = useState(1);
   const [name, setName] = useState("Karim jan");
+  const [showChat, setShowChat] = useState(false);
 
   return (
     <AppContext.Provider
-      value={{ contacts, dispatchContacts, id, setId, name, setName }}
+      value={{
+        contacts,
+        dispatchContacts,
+        id,
+        setId,
+        name,
+        setName,
+        showChat,
+        setShowChat,
+      }}
     >
       {children}
     </AppContext.Provider>

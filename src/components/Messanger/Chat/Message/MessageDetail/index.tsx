@@ -19,7 +19,7 @@ const Sender = (message: { message: string }) => {
       <div className="text-4xl">
         <IoPersonCircleSharp color="#ff4a59" />
       </div>
-      <div className="bg-white rounded-lg p-1 w-80">
+      <div className="bg-white rounded-lg p-1 w-80 lg:w-64 md:!w-full">
         <h3 className="font-semibold text-sm">{name}</h3>
         <p className="text-xs">{message.message}</p>
       </div>
@@ -30,7 +30,7 @@ const Sender = (message: { message: string }) => {
 const Reciever = (message: { message: string }) => {
   return (
     <li className="flex  justify-end gap-2 w-full ">
-      <div className="bg-green-400 rounded-lg p-1 w-80">
+      <div className="bg-green-400 rounded-lg p-1 w-80 lg:w-64 md:!w-full">
         <h3 className="font-semibold text-sm">Me</h3>
         <p className="text-xs">{message.message}</p>
       </div>

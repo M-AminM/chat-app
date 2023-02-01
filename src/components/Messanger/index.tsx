@@ -4,7 +4,7 @@ import Layout from "./Layout";
 interface MessangerProps extends React.PropsWithChildren {}
 const Messanger: React.FunctionComponent<MessangerProps> = (): JSX.Element => {
   return (
-    <div className="h-screen w-screen p-10 ">
+    <div className="h-screen w-screen p-10 lg:p-6">
       <Layout />
     </div>
   );

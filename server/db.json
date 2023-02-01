@@ -59,6 +59,12 @@
           "name": "Jack",
           "message": "asd",
           "type": "sender"
+        },
+        {
+          "id": 1675233875535,
+          "name": "Me",
+          "message": "dsa",
+          "type": "reciever"
         }
       ]
     },
