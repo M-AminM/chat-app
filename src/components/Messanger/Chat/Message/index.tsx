@@ -39,7 +39,11 @@ const ChatMessage: React.FunctionComponent<
     >
       <ul className="flex flex-col gap-8">
         {messages?.map((message: any) => (
-          <MessageDetail type={message.type} message={message.message} />
+          <MessageDetail
+            type={message.type}
+            message={message.message}
+            key={message.id}
+          />
         ))}
       </ul>
       <div ref={bottomRef} />

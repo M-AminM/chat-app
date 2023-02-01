@@ -26,6 +26,8 @@ type Context = {
   setName: React.Dispatch<React.SetStateAction<string>>;
   showChat: boolean;
   setShowChat: React.Dispatch<React.SetStateAction<boolean>>;
+  search: ContactType[];
+  setSearch: React.Dispatch<React.SetStateAction<ContactType[]>>;
 };
 
 export const AppContext = createContext<Context>({
@@ -37,6 +39,8 @@ export const AppContext = createContext<Context>({
   setName: () => null,
   showChat: false,
   setShowChat: () => null,
+  search: [],
+  setSearch: () => null,
 });
 
 const InitialContact: ContactType[] = [];
@@ -50,8 +54,9 @@ const AppContextProvider: React.FunctionComponent<AppContextProviderProps> = ({
   );
 
   const [id, setId] = useState(1);
-  const [name, setName] = useState("Karim jan");
+  const [name, setName] = useState("Jack");
   const [showChat, setShowChat] = useState(false);
+  const [search, setSearch] = useState<ContactType[]>([]);
 
   return (
     <AppContext.Provider
@@ -64,6 +69,8 @@ const AppContextProvider: React.FunctionComponent<AppContextProviderProps> = ({
         setName,
         showChat,
         setShowChat,
+        search,
+        setSearch,
       }}
     >
       {children}

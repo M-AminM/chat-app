@@ -3,16 +3,14 @@ import { MdSend } from "react-icons/md";
 import axios from "axios";
 import { AppContext } from "../../../../context/store";
 
-interface ChatSenderProsp extends React.PropsWithChildren {}
+interface ChatSenderProp extends React.PropsWithChildren {}
 type DataType = {
   id: string;
   name: string;
   message: string;
   type: string;
 };
-const ChatSender: React.FunctionComponent<
-  ChatSenderProsp
-> = (): JSX.Element => {
+const ChatSender: React.FunctionComponent<ChatSenderProp> = (): JSX.Element => {
   const { id, contacts } = useContext(AppContext);
   const [myArray, setMyArray] = useState<any>();
   const [click, setClick] = useState(false);
@@ -21,14 +19,9 @@ const ChatSender: React.FunctionComponent<
   let nameChat = contacts.filter((data) => data.id === id)[0]?.name;
 
   useEffect(() => {
-    // if (messages !== undefined) {
-    //   setMyArray(messages);
-    //   return;
-    // }
     if (messages?.length !== undefined) {
       setMyArray(messages);
     }
-    console.log(messages?.length !== undefined);
   }, [messages?.length !== undefined, messages?.length]);
 
   const inputRef = useRef<any>();
@@ -47,22 +40,6 @@ const ChatSender: React.FunctionComponent<
         type: type,
       };
       setMyArray([...myArray, data]);
-      console.log(myArray);
-
-      // axios({
-      //   url: `http://localhost:4000/contacts/${id}`,
-      //   method: "PUT",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   data: JSON.stringify(data1),
-      // })
-      //   .then((response) => {
-      //     console.log(response);
-      //   })
-      //   .catch((err) => {});
-      // inputRef.current.value = "";
-      // inputRef.current.focus();
     } else {
       window.alert("Write your message !!!");
     }
@@ -85,9 +62,7 @@ const ChatSender: React.FunctionComponent<
         },
         data: JSON.stringify(data1),
       })
-        .then((response) => {
-          console.log(response);
-        })
+        .then((response) => {})
         .catch((err) => {});
       setClick(false);
       setInput("");

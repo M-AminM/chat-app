@@ -13,8 +13,15 @@ type ContactType = {
 };
 
 const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
-  const { contacts, dispatchContacts, setId, setName, id, setShowChat } =
-    useContext(AppContext);
+  const {
+    contacts,
+    dispatchContacts,
+    setId,
+    setName,
+    id,
+    setShowChat,
+    search,
+  } = useContext(AppContext);
 
   const contactsData = () => {
     axios
@@ -34,10 +41,11 @@ const ChatList: React.FunctionComponent<ChatListProps> = (): JSX.Element => {
   useEffect(() => {
     contactsData();
   }, []);
+  
 
   return (
     <div className="bg-slate-700 rounded-2xl flex flex-col overflow-auto h-full">
-      {contacts.map((contact: ContactType) => (
+      {(search.length === 0 ? contacts : search).map((contact: ContactType) => (
         <div
           className={`flex justify-between cursor-pointer p-4 hover: duration-150 ease-in ${
             contact.id === id && "bg-slate-800"
